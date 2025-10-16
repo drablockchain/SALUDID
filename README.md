@@ -292,8 +292,8 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 ## 👥 Equipo
 
-- **Desarrollador Principal**: [Tu Nombre]
-- **Blockchain Developer**: [Nombre]
+- **Desarrollador Principal**: [Jorge Parejo]
+- **Blockchain Developer**: [Ángel Piérola]
 - **Médico experto**: [drablockchain] 
 
 
