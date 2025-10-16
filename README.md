@@ -278,32 +278,6 @@ npm run lint             # Linter de código
 - [ ] Notificaciones push
 - [ ] Exportación de certificados
 
-## 🐛 Solución de Problemas
-
-### Error: "No signers available"
-```bash
-# Verificar que PRIVATE_KEY esté en .env
-echo $PRIVATE_KEY
-```
-
-### Error: "Network not supported"
-```bash
-# Verificar que MetaMask esté conectado a Filecoin Calibration
-# Chain ID debe ser 314159
-```
-
-### Error: "Insufficient funds"
-```bash
-# Obtener FIL de prueba desde el faucet
-# https://faucet.calibration.fildev.network/
-```
-
-### Error: "Contract not deployed"
-```bash
-# Verificar dirección del contrato en .env
-# Ejecutar: npm run check
-```
-
 ## 🤝 Contribución
 
 1. Fork el proyecto
@@ -353,4 +327,4 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 **¡SaludID - Certificados Médicos Descentralizados! 🏥⚡**
 
-*Construido con ❤️ para la Hackaton Latina SaludID*
+*Construido con ❤️ para la Latina Hackaton Startup Program SaludID*
