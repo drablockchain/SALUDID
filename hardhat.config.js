@@ -1,39 +1,35 @@
-'use client'
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
 
-import { useCallback, useEffect, useState } from 'react'
-import unlockService from '../lib/unlock'
-
-export default function useUnlock(address) {
-  const [isUnlocked, setIsUnlocked] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [expiresAt, setExpiresAt] = useState(null)
-
-  const refetch = useCallback(async () => {
-    if (!address || !unlockService.isConfigured()) {
-      setIsUnlocked(false)
-      setExpiresAt(null)
-      return
-    }
-    setLoading(true)
-    try {
-      const { hasKey, expiresAt: exp } = await unlockService.getMembership(address)
-      setIsUnlocked(Boolean(hasKey))
-      setExpiresAt(exp)
-    } finally {
-      setLoading(false)
-    }
-  }, [address])
-
-  useEffect(() => {
-    let cancelled = false
-    ;(async () => {
-      if (cancelled) return
-      await refetch()
-    })()
-    return () => { cancelled = true }
-  }, [refetch])
-
-  return { isUnlocked, loading, expiresAt, refetch }
-}
-
-
+/** @type import('hardhat/config').HardhatUserConfig */
+module.exports = {
+  solidity: {
+    version: "0.8.20",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+  networks: {
+    // Filecoin Calibration Testnet
+    calibration: {
+      url: "https://rpc.ankr.com/filecoin_testnet",
+      chainId: 314159,
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+    },
+    // Filecoin Mainnet (opcional)
+    filecoin: {
+      url: "https://api.node.glif.io/rpc/v1",
+      chainId: 314,
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+    },
+  },
+  paths: {
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts",
+  },
+};
